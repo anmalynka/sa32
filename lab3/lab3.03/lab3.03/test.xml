@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<forestry>
+  <forest1> bla </forest1>
+	<forest>
+		<name> NameOne </name>
+		<area> 1456  </area>
+		<rock> plagioclase  </rock>
+		<age> 1200 years </age>
+		<tree_density>  20 </tree_density>
+	</forest>
+	<forest>
+		<name> NameTwo </name>
+		<area> 213  </area>
+		<rock> monoclinic pyroxenes </rock>
+		<age> 100 years </age>
+		<tree_density> 14 </tree_density>
+	</forest>
+	<forest>
+		<name> NameThree </name>
+		<area> 100  </area>
+		<rock> rhombic pyroxenes </rock>
+		<age> 1500 years </age>
+		<tree_density> 12 </tree_density>
+	</forest>
+	<forest>
+		<name> NameFour </name>
+		<area> 376  </area>
+		<rock>  magnetite </rock>
+		<age> 120 years </age>
+		<tree_density> 15 </tree_density>
+	</forest>
+	<forest>
+		<name> NameFive </name>
+		<area> 103  </area>
+		<rock> olivine </rock>
+		<age> 500 years </age>
+		<tree_density> 24 </tree_density>
+	</forest>
+	<forest>
+		<name> NameSix </name>
+		<area> 784  </area>
+		<rock> olivine </rock>
+		<age> 1200 years </age>
+		<tree_density> 8 </tree_density>
+	</forest>
+	<forest>
+		<name> NameSeven </name>
+		<area> 334  </area>
+		<rock> ore </rock>
+		<age> 8000 years </age>
+		<tree_density> 5 </tree_density>
+	</forest>
+	<forest>
+		<name> NameEigth </name>
+		<area> 563  </area>
+		<rock>  monoclinic pyroxenes </rock>
+		<age> 1000 years </age>
+		<tree_density> 17 </tree_density>
+	</forest>
+	<forest>
+		<name> NameNine </name>
+		<area> 1567  </area>
+		<rock> sulfur </rock>
+		<age> 7000 years </age>
+		<tree_density> 12 </tree_density>
+	</forest>
+	<forest>
+		<name> NameTen </name>
+		<area> 369  </area>
+		<rock> olivine </rock>
+		<age> 700 years </age>
+		<tree_density> 18 </tree_density>
+	</forest>
+</forestry>
+
