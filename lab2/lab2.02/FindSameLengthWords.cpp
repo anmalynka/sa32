@@ -6,13 +6,13 @@ void FindSameLengthWords :: toStart(ifstream &inFile)
 	inFile.seekg(0);
 }
 
-void FindSameLengthWords :: OpenFileIn(ifstream &inFile, string nameIn)
+void FindSameLengthWords :: OpenFileIn(ifstream &inFile, string nameIn, int openError)
 {
 	inFile.open(nameIn);
 	if (!inFile.is_open())
 	{
-		cout << "File can't be opened\n";
-		exit(1);
+		//cout << "File can't be opened\n";
+		throw 1;
 	}
 }
 
@@ -33,6 +33,7 @@ int FindSameLengthWords :: CountWords(ifstream &inFile)
 {
 	string item;
 	int count = 0;
+	#pragma omp parallel while
 	while (!inFile.eof())
 	{
 		inFile >> item;
@@ -46,6 +47,7 @@ int FindSameLengthWords :: CountLines(ifstream &inFile)
 {
 	char c;
 	int line_count = 0;
+	#pragma omp parallel while
 	while (!inFile.eof())
 	{
 		c = inFile.get();
@@ -62,7 +64,8 @@ string FindSameLengthWords :: ShowString(ifstream& inFile, string line, int numP
 {
 	for (int i = 1; i <= numPages; i++)
 		getline(inFile, line);
-	if (line.empty()) {
+	if (line.empty()) 
+	{
 		toStart(inFile);
 		return "String is empty, try another one. ";
 	}
@@ -70,7 +73,7 @@ string FindSameLengthWords :: ShowString(ifstream& inFile, string line, int numP
 		return  line;
 }
 
-int FindSameLengthWords :: FindInString(ifstream &inFile, string line, int numPages, int numLetters)
+int FindSameLengthWords :: StrLWord(ifstream &inFile, string line, int numPages, int numLetters)
 {
 	char letter;
 	for (int i = 1; i <= numPages; i++)
@@ -78,7 +81,7 @@ int FindSameLengthWords :: FindInString(ifstream &inFile, string line, int numPa
 	int size = line.length();
 	string word;
 	int same_length = 0;
-
+	#pragma omp parallel for
 	for (int i = 0; i < size; i++)
 	{
 		if (!isspace(line[i]) && isalpha(line[i]) && !isdigit(line[i]))

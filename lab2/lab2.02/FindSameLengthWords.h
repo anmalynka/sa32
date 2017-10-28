@@ -12,12 +12,12 @@ class FindSameLengthWords
 		string in, s;
 	public:
 		void toStart(ifstream &inFile);
-		void OpenFileIn(ifstream &inFile, string nameIn);
+		void  OpenFileIn(ifstream &inFile, string nameIn, int openError);
 		int FileSize(ifstream& inFile, int fileSize);
 		void OpenFileOut(ofstream &outFile, string nameOut);
 		int CountWords(ifstream &inFile);
 		int CountLines(ifstream &inFile);
 		string ShowString(ifstream& inFile, string line, int numPages);
-		int FindInString(ifstream &inFile, string line, int numPages, int numLetters);
+		int StrLWord(ifstream &inFile, string line, int numPages, int numLetters);
 		
 };
