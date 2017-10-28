@@ -27,7 +27,7 @@ typedef struct oQueue
 
 void makequeue(QUEUE*&q, int n)
 {
-	int b, c; int k=0;
+	int b, c, k=0;
 	while (k < n)
 	{
 		NODE* nd = new NODE;
@@ -42,33 +42,27 @@ void makequeue(QUEUE*&q, int n)
 	}
 }
 
-double minprio(QUEUE *&q,  double res, int n) {
-	int k = 0;
-	
-	/*while (k < n)
-	{*/
+double minprio(QUEUE *&q,  double res) {
 	NODE**curnode = &(q->first);
 	NODE** minnode = curnode;
-	NODE *tmp = *minnode;
+	
 		while (*curnode != NULL)
 		{
-			if ((*curnode)->prio < (*minnode)->prio)
+			if ((*curnode)->prio <= (*minnode)->prio)
 				minnode = curnode;
 			curnode = &((*curnode)->next);
-			//curnode = &(q->first);
 		}
 		
 		res = (*minnode)->value;
+		NODE *tmp = *minnode;
 		*minnode = tmp->next;
 		free(tmp);
 		if (*minnode == NULL)
 			q->end = minnode;
-		//cout << res;
-	/*}*/
 		return res;
 }
 
-void makeoutputQueue(oQueue *&head, oQueue*&tail, QUEUE *&q,  double res, int n)
+void makeoutputQueue(oQueue *&head, oQueue*&tail, QUEUE *&q,  double res)
 {
 	
 	head = new oQueue;
@@ -76,14 +70,13 @@ void makeoutputQueue(oQueue *&head, oQueue*&tail, QUEUE *&q,  double res, int n)
 	head->nextO = tail;
 	tail->predO = head;
 
-	res = minprio(q, res, n);
+	res = minprio(q, res);
 	oQueue *oQ = new oQueue;
 	oQ->info = res;
 	oQ->nextO = tail;
 	oQ->predO = tail->predO;
 	tail->predO = oQ;
 	oQ->predO->nextO = oQ;
-	//cout << oQ;
 }
 void showoutputQueue(oQueue *&head, oQueue*&tail)
 {
@@ -94,14 +87,13 @@ void showoutputQueue(oQueue *&head, oQueue*&tail)
 		output = output->nextO;
 	}
 	cout << " ";
-	//return;
 }
 
 void main(){
 	oQueue *head, *tail;
 	int n, k = 0;
 	
-	double res=0, res2;
+	double res = 0;
 QUEUE *q = new QUEUE;
 q->first = NULL;
 q->end = &(q->first);
@@ -111,24 +103,13 @@ makequeue(q, n);
 
 if (q->first == NULL)
 cout << "Can't get the value ";
-
-
-//cout << minprio(q, curnode, minnode, res, n)<< endl;
+cout << "Prioritized queue: ";
 while (k < n)
 {
-	makeoutputQueue(head, tail, q, res, n);
+	makeoutputQueue(head, tail, q, res);
 	showoutputQueue(head, tail);
 	k++;
 }
 
-//cout << res1<<endl;
-
-
-//if (*minnode == NULL)
-//q->end = minnode;
-//res2 = (*minnode)->value; 
-//cout << res2 << endl;
-//tmp = *minnode;
-//*minnode = tmp->next;
 system("pause");
 }
