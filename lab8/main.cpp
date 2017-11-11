@@ -27,7 +27,7 @@ void main()
 		}
 		case 2:
 		{
-			cout << "Let's add an adjacency matrix for graph /n Input number of tops  ";
+			cout << "Let's add an adjacency matrix for graph \n Input number of tops  ";
 			cin >> row;
 			culloms = row;
 			cout << "Input values for graph tops\n ";
@@ -57,7 +57,10 @@ void main()
 	}
 	catch (int error)
 	{
-		cout << "Illegal data for matrix\n";
+		if (error ==2)
+			cout << "Illegal data for matrix\n";
+		if (error == 12)
+			cout << "\nCannot find top\n";
 	}
 	system("pause");
 }

@@ -51,8 +51,9 @@ void Graph:: FillValueArray(int *Arr, size_t row)
 }
 int Graph::IncidencyFind(int**Arr, int *Val, size_t row, size_t culloms, int value)
 {
-
+	int count = 0;
 	for (int i = 0; i < row; i) {
+		count++;
 		for (int j = 0; j < culloms; j++) {
 			if (Arr[i][j] == 1) {
 				cout << "-" << j + 1;
@@ -73,15 +74,20 @@ int Graph::IncidencyFind(int**Arr, int *Val, size_t row, size_t culloms, int val
 					}
 				}
 			}
-
+	
+		}
+		if (count == row*culloms) {
+			i = row;
+			throw 12;
 		}
 	}
 }
 
 int Graph::AdjacencyFind(int**Arr, int*Val, size_t row, size_t culloms, int value)
 {
-	cout << "Steps:   1";
+	int count = 0;
 	for (int i = 0; i < row; i) {
+		count++;
 		for (int j = 0; j < row; j++) {
 			if (Arr[i][j] == 1) {
 				Arr[i][j] = 0;
@@ -97,6 +103,10 @@ int Graph::AdjacencyFind(int**Arr, int*Val, size_t row, size_t culloms, int valu
 				break;
 			}
 
+		}
+		if (count == row*culloms) {
+			i = row;
+			throw 12;
 		}
 	}
 
