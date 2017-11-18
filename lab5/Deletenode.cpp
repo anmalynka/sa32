@@ -122,6 +122,18 @@ void Tree::printTree(Node *root, const char *dir, int level) {
 	}
 }
 
+void Tree::Display(Node *root, int indent)
+{
+	if (root != nullptr)
+	{
+		Display(root->right, indent + 4);
+		if (indent > 0)
+			cout << setw(indent) << " ";
+		cout  << root->data << endl;
+		Display(root->left, indent + 4);
+	}
+}
+
 void CSV::OpenFile(vector<int>&myValues, int numbers, int lines)
 {
 	int x = 0;

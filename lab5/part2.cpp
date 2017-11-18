@@ -1,11 +1,11 @@
 #include "Deletenode.h"
 void main() {
-	cout << "\n\n\nStart of second program";
+	cout << "\n\n\nStart of second program\n";
 	Tree T;
 	CSV C;
 	Node *root = NULL;
 	vector <int> myValues;
-	int number, numbers = 1000, lines = 1, value;;
+	int number, numbers = 10, lines = 1, value;;
 	try {
 		C.OpenFile(myValues, numbers, lines);
 		C.ShowArray(myValues, numbers, lines);
@@ -14,7 +14,8 @@ void main() {
 				T.insert(&root, myValues[i]);
 			}
 		}
-		T.printTree(root, "root", 0);
+		T.printTree(root, "root",0);
+		T.Display(root, 0);
 		cout << "------------------\n Input value to delete  ";
 		cin >> value;
 		if (value < 1 || value > 1000)

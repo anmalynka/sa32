@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 #include <vector>
 using namespace std;
 
@@ -22,6 +23,7 @@ public:
 	void removeNodeByPtr(Node *target);
 	void deleteValue(Node *root, int value);
 	void printTree(Node *root, const char *dir, int level);
+	void Display(Node *current, int indent);
 };
 
 class CSV {
