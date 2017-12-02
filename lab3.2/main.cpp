@@ -7,18 +7,13 @@ void main()
 	line.push_back(vector<char>());
 	int n = 0, lineNumber, startPoint, Choice, continueOp=1, saveExit;
 	string newLine, findLine, editLine, changeElement;
+	c.CreateVector(line, n);
+	c.DelDelimiters(line, n);
+	c.ShowArray(line, n);
 	char section;
 	try {
-		c.CreateVector(line, n);
-		c.DelDelimiters(line, n);
-		c.ShowArray(line, n);
-		cout << endl;
-		cout << "Find line by name. Input name from line" << endl;
-		cin >> findLine;
-		c.ShowSearch(line, n, findLine);
-
 		while (continueOp == 1) {
-			cout << "\nAlphabet sort (1), Numeric sort (2), Add line (3), Edit line (4),  Edit element (5) " << endl;
+			cout << "\nAlphabet sort (1), Numeric sort (2), Add line (3), Edit line (4),  Edit element (5), Search (6) " << endl;
 			cin >> Choice;
 			switch (Choice)
 			{
@@ -63,6 +58,12 @@ void main()
 				system("CLS");
 				c.ShowArray(line, n); 
 				break;
+			case 6:
+				cout << endl;
+				cout << "Find line by name. Input name from line" << endl;
+				cin >> findLine;
+				c.ShowSearch(line, n, findLine);
+				break;
 			default:
 				throw 3;
 			}
@@ -81,13 +82,13 @@ void main()
 	catch (int error)
 	{
 		if (error == 1)
-			cout << "Couldn;t open the file";
+			cout << "Couldn't open the file \n";
 		if (error == 2)
-			cout << "No such field";
+			cout << "No such field \n";
 		if (error == 3)
-			cout << "You didn't choose any posible value";
+			cout << "You didn't choose any posible value\n";
 		if (error == 4)
-			cout << "Illegal data";
+			cout << "Illegal data \n";
 	}
 	system("pause");
 }
