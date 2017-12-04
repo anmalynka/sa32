@@ -23,7 +23,8 @@ class Calculation
 		int Brackets(string line);
 		float functionCalculate(string& tmpline, bool isBracket);
 		int WrongInput(string line, string character, int stringToInt);
-		float Calculation::Recursion();
+		float Calculation::RecursionSum(string line, string &tmpline, int n, int m, bool isBracket, float result);
+		float Calculation::RecursionProduct(string line, string &tmpline, int n, int m, bool isBracket, float value);
 		void  Calculation::FindAndChange(string line, string &tmpline, int &index);
 		float Calculation::NonRecursion(string line,string &tmpline, int n, int m, int &index, bool isBracket, char symbol);
 };

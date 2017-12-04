@@ -130,7 +130,7 @@ float  Calculation::functionCalculate(string&  tmpline, bool isBracket)
 		{
 			if (!tmpline[i + 1] == '(')
 			{
-				throw 1;
+				throw 4;
 			}
 			else
 				stackSymbols.push(tmpline[i]);
@@ -208,11 +208,11 @@ int Calculation:: WrongInput(string line, string character, int stringToInt)
 {
 	for (int i = 0; i < line.length(); i++)
 	{
-		if (!isdigit(line[i]) && !isOperation(line[i])&&!line[i]=='x')
+		if (!isdigit(line[i]) && !isOperation(line[i]) && !line[i] == 'x')
 			for (i = 0; i < line.length(); i++)
-				return 1;
-			if (Brackets(line) != 0)
-				return 2;
+				throw 1;
+		if (Brackets(line) != 0)
+			throw 2;
 	}
 	for (int i = 0; i <= line.length(); i++)
 	{
@@ -227,24 +227,41 @@ int Calculation:: WrongInput(string line, string character, int stringToInt)
 				stringToInt = stoi(character);
 				character = "\0";
 				if (!isPrime(stringToInt))
-					return 3;
+					throw 3;
 			}
 		}
 	}
 }
 
-float Calculation::Recursion()
+float Calculation::RecursionSum(string line, string &tmpline, int n, int m, bool isBracket, float result)
 {
+	if (n <= m) {
+		FindAndChange(line, tmpline, n);
+		result = functionCalculate(tmpline, isBracket);
+		n++;
+		return result + RecursionSum(line, tmpline, n, m, isBracket, result);;
+	}
+	else
+		return 0;
+}
+float Calculation::RecursionProduct(string line, string &tmpline, int n, int m, bool isBracket, float value)
+{
+	if (n <= m) {
+		FindAndChange(line, tmpline, n);
+		value = functionCalculate(tmpline, isBracket);
+		n++;
+		return value *RecursionProduct(line, tmpline, n, m, isBracket, value);;
+	}
+	else
+		return 1;
 	return 0;
 }
-
 void  Calculation::FindAndChange(string line, string &tmpline, int &index)
 {
 	tmpline = line;
 	for (int j = 0; j < tmpline.length(); j++)
 	{
 		if (tmpline[j] == 'x') {
-			//tmpline[j] = NULL;
 			tmpline[j] = index+48;
 		}
 	}
@@ -264,6 +281,7 @@ float Calculation::NonRecursion(string line, string &tmpline, int n, int m, int 
 		}
 		case 'P': 
 		{
+			result = 1;
 			for (index = n; index <= m; index++)
 			{
 				FindAndChange(line, tmpline, index);
@@ -271,7 +289,9 @@ float Calculation::NonRecursion(string line, string &tmpline, int n, int m, int 
 			}
 			break;
 		}
+		default: throw 5;
 	}
+	index = 0;
 	return result;
 }
 
