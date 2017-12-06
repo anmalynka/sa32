@@ -1,18 +1,17 @@
 #include "CountLeafs.h"
 
-
-
-void Tree::Push(int a, node **t)
+void Tree::Push(int a, node *t)
 {
-	if ((*t) == NULL)
+	if (t == NULL)
 	{
-		(*t) = new node;
-		(*t)->info = a;
-		(*t)->l = (*t)->r = NULL;
+		t = new node;
+		t->info = a;
+		t->l = t->r = NULL;
 		return;
 	}
-	if (a>(*t)->info) Push(a, &(*t)->r);
-	else Push(a, &(*t)->l);
+	if (a>t->info) 
+		Push(a, t->r);
+	else Push(a,t->l);
 }
 
 void Tree::Countsum(node *t)

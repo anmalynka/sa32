@@ -25,7 +25,7 @@ void main()
 		{
 			if (!(cin >> Ad[i]))
 				throw 1;
-			t.Push(Ad[i], &tree);
+			t.Push(Ad[i], tree);
 		}
 		cout << "\tTree\n";
 		t.Print(tree, 0);

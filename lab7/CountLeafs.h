@@ -15,7 +15,7 @@ struct node
 class Tree
 {
 public:
-	void Push(int a, node **t);
+	void Push(int a, node *t);
 	void Countsum(node *t);
 	void Print(node *t, int u);
 };
